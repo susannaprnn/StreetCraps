@@ -9,6 +9,11 @@ public class Roller {
 	};
 	
 	public boolean PlayRound() {  // PlayRound returns false if the game has ended
-		return true;	
+		int sum = firstDice.Roll() + secondDice.Roll();
+		
+		if (sum == 2 || sum == 3 || sum == 12)
+			return false;	
+		else 
+			return true;
 	}
 }

@@ -12,7 +12,19 @@ public class RollerTest {
 		Roller roller = new Roller(create1Dice(),create1Dice());
 		TestCase.assertFalse(roller.PlayRound());
 	}
-
+	
+	@Test
+	public void testPlayroundThrowing3() {
+		Roller roller = new Roller(create2Dice(),create1Dice());
+		TestCase.assertFalse(roller.PlayRound());
+	}
+	
+	@Test
+	public void testPlayroundThrowing12() {
+		Roller roller = new Roller(create6Dice(),create6Dice());
+		TestCase.assertFalse(roller.PlayRound());
+	}
+	
 	@Test
 	public void testPlayroundThrowing6() {
 		Roller roller = new Roller(create3Dice(),create3Dice());
