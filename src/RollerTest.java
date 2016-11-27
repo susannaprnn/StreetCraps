@@ -34,7 +34,7 @@ public class RollerTest {
 	private Dice create1Dice() {
 		 //mock creation
 		 Dice mockedDice = mock(Dice.class);
-		 when(mockedDice.Roll()).thenReturn(1);
+		 when(mockedDice.roll()).thenReturn(1);
 	 
 		 return mockedDice;
 	}
@@ -42,7 +42,7 @@ public class RollerTest {
 	private Dice create2Dice() {
 		 //mock creation
 		 Dice mockedDice = mock(Dice.class);
-		 when(mockedDice.Roll()).thenReturn(2);
+		 when(mockedDice.roll()).thenReturn(2);
 		 
 		 return mockedDice;
 	}
@@ -50,7 +50,7 @@ public class RollerTest {
 	private Dice create3Dice() {
 		 //mock creation
 		 Dice mockedDice = mock(Dice.class);
-		 when(mockedDice.Roll()).thenReturn(3);
+		 when(mockedDice.roll()).thenReturn(3);
 	 
 		 return mockedDice;
 	}
@@ -58,7 +58,7 @@ public class RollerTest {
 	private Dice create4Dice() {
 		 //mock creation
 		 Dice mockedDice = mock(Dice.class);
-		 when(mockedDice.Roll()).thenReturn(4);
+		 when(mockedDice.roll()).thenReturn(4);
 		 
 		 return mockedDice;
 	}
@@ -66,7 +66,7 @@ public class RollerTest {
 	private Dice create5Dice() {
 		 //mock creation
 		 Dice mockedDice = mock(Dice.class);
-		 when(mockedDice.Roll()).thenReturn(5);
+		 when(mockedDice.roll()).thenReturn(5);
 	 
 		 return mockedDice;
 	}
@@ -74,7 +74,7 @@ public class RollerTest {
 	private Dice create6Dice() {
 		 //mock creation
 		 Dice mockedDice = mock(Dice.class);
-		 when(mockedDice.Roll()).thenReturn(6);
+		 when(mockedDice.roll()).thenReturn(6);
 		 
 		 return mockedDice;
 	}

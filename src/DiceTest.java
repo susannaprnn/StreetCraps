@@ -8,7 +8,7 @@ public class DiceTest {
 	@Test
 	public void testRoll() {
 		Dice diceUnderTest = new Dice();
-		int diceOutcome = diceUnderTest.Roll();
+		int diceOutcome = diceUnderTest.roll();
 		
 		TestCase.assertTrue(diceOutcome >= 1 && diceOutcome <= 6);
 	}
