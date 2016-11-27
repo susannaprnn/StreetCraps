@@ -1,8 +1,6 @@
 import static org.junit.Assert.*;
 
 import org.junit.Test;
-
-import junit.framework.Assert;
 import junit.framework.TestCase;
 
 public class DiceTest {

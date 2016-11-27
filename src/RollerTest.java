@@ -1,4 +1,3 @@
-import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
 
@@ -14,6 +13,20 @@ public class RollerTest {
 		TestCase.assertFalse(roller.PlayRound());
 	}
 
+	@Test
+	public void testPlayroundThrowing6() {
+		Roller roller = new Roller(create3Dice(),create3Dice());
+		TestCase.assertTrue(roller.PlayRound());
+	}
+	
+	private Dice create1Dice() {
+		 //mock creation
+		 Dice mockedDice = mock(Dice.class);
+		 when(mockedDice.Roll()).thenReturn(1);
+	 
+		 return mockedDice;
+	}
+	
 	private Dice create2Dice() {
 		 //mock creation
 		 Dice mockedDice = mock(Dice.class);
@@ -22,13 +35,38 @@ public class RollerTest {
 		 return mockedDice;
 	}
 
-	private Dice create1Dice() {
+	private Dice create3Dice() {
 		 //mock creation
 		 Dice mockedDice = mock(Dice.class);
-		 when(mockedDice.Roll()).thenReturn(1);
+		 when(mockedDice.Roll()).thenReturn(3);
 	 
 		 return mockedDice;
 	}
+	
+	private Dice create4Dice() {
+		 //mock creation
+		 Dice mockedDice = mock(Dice.class);
+		 when(mockedDice.Roll()).thenReturn(4);
+		 
+		 return mockedDice;
+	}
+	
+	private Dice create5Dice() {
+		 //mock creation
+		 Dice mockedDice = mock(Dice.class);
+		 when(mockedDice.Roll()).thenReturn(5);
+	 
+		 return mockedDice;
+	}
+	
+	private Dice create6Dice() {
+		 //mock creation
+		 Dice mockedDice = mock(Dice.class);
+		 when(mockedDice.Roll()).thenReturn(6);
+		 
+		 return mockedDice;
+	}
+
 }
 
 
