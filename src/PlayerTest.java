@@ -28,5 +28,11 @@ public class PlayerTest {
 		thrown.expect(IllegalArgumentException.class);
 		Player player =  new Player("Petter",-300);
 	}
+	
+	@Test
+	public void testPlayerToString() {
+		Player player =  new Player("Petter",300);
+		TestCase.assertTrue(player.toString().equals("Spelaren Petter har 300 kronor"));
+	}
 }
    

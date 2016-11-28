@@ -23,6 +23,10 @@ public class Player {
 			
 			this.cash = cash;
 		}
+		
+		public String toString(){
+			return "";
+		}
 	}
 
 
