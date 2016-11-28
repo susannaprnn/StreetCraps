@@ -25,7 +25,7 @@ public class Player {
 		}
 		
 		public String toString(){
-			return "";
+			return "Spelaren " + name + " har " + cash + " kronor";
 		}
 	}
 
