@@ -6,7 +6,10 @@ public class Player {
 		
 		public Player(String name, int cash) {
 			this.name = name;
-			this.cash = cash;
+			if(cash >= 0)
+				this.cash = cash;
+			else 
+				throw new IllegalArgumentException();
 		}
 		
 		public String getName(){

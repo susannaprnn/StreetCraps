@@ -25,7 +25,7 @@ public class PlayerTest {
 	
 	@Test
 	public void testGetPlayerCanNotHaveNegCash() {
-		thrown.expect(NullPointerException.class);
+		thrown.expect(IllegalArgumentException.class);
 		Player player =  new Player("Petter",-300);
 	}
 }
