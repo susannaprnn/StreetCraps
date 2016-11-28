@@ -6,10 +6,7 @@ public class Player {
 		
 		public Player(String name, int cash) {
 			this.name = name;
-			if(cash >= 0)
-				this.cash = cash;
-			else 
-				throw new IllegalArgumentException();
+			setCash(cash);
 		}
 		
 		public String getName(){
@@ -19,7 +16,13 @@ public class Player {
 		public int getCash(){
 			return cash;
 		}
-
+		
+		public void setCash(int cash){
+			if(cash < 0)
+				throw new IllegalArgumentException();
+			
+			this.cash = cash;
+		}
 	}
 
 
