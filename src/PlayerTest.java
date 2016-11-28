@@ -15,6 +15,6 @@ public class PlayerTest {
 	@Test
 	public void testGetPlayerCash() {
 		Player player =  new Player("Petter",300);
-		TestCase.assertTrue(player.getCash()==300);
+		TestCase.assertTrue(player.getCash() == 300);
 	}
 }
