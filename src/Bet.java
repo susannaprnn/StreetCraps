@@ -4,7 +4,11 @@ public class Bet {
 	private int amount;
 	private boolean isBetOnPass;
 	public Bet(int amount, boolean isBetOnPass, Player player){
-		this.amount = amount;
+		if(amount <= 0)
+			throw new IllegalArgumentException();
+		else
+			this.amount = amount;
+		
 		this.isBetOnPass = isBetOnPass;
 		this.player = player;
 	}
