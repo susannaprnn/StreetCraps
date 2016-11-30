@@ -2,11 +2,16 @@ import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import junit.framework.TestCase;
 
 public class BetTest {
+	
+	@Rule
+    public ExpectedException thrown = ExpectedException.none();
 	
 	private Player createPlayer() {
 		 //mock creation
@@ -32,5 +37,11 @@ public class BetTest {
 	public void testIsBetOnPass() {
 		Bet bet =  new Bet(300, true, createPlayer());
 		TestCase.assertTrue(bet.getIsBetOnPass());
+	}
+	
+	@Test
+	public void testBetIsZero() {
+		thrown.expect(IllegalArgumentException.class);
+		Bet bet =  new Bet(0, true, createPlayer());
 	}
 }
