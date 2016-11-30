@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="sv"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>GameStateTest.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">StreetCraps (1) (2016-nov-29 22:12:22)</a> &gt; <a href="../../index.html" class="el_group">StreetCraps</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">GameStateTest.java</span></div><h1>GameStateTest.java</h1><pre class="source lang-java linenums">import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+import junit.framework.TestCase;
+
+<span class="fc" id="L7">public class GameStateTest {</span>
+
+	@Test
+	public void testGetRound() {
+<span class="fc" id="L11">		GameState gameState =  new GameState(2,11);</span>
+<span class="pc bpc" id="L12" title="1 of 2 branches missed.">		TestCase.assertTrue(gameState.getRound() == 2);</span>
+<span class="fc" id="L13">	}</span>
+	
+	@Test
+	public void testSetRound() {
+<span class="fc" id="L17">		GameState gameState =  new GameState(2,11);</span>
+<span class="fc" id="L18">		gameState.setRound(3);</span>
+<span class="pc bpc" id="L19" title="1 of 2 branches missed.">		TestCase.assertTrue(gameState.getRound() == 3);</span>
+<span class="fc" id="L20">	}</span>
+	
+	@Test
+	public void testGetPoint() {
+<span class="fc" id="L24">		GameState gameState =  new GameState(2,11);</span>
+<span class="pc bpc" id="L25" title="1 of 2 branches missed.">		TestCase.assertTrue(gameState.getPoint() == 11);</span>
+<span class="fc" id="L26">	}</span>
+	
+	@Test
+	public void testSetPoint() {
+<span class="fc" id="L30">		GameState gameState =  new GameState(2,11);</span>
+<span class="fc" id="L31">		gameState.setPoint(8);</span>
+<span class="pc bpc" id="L32" title="1 of 2 branches missed.">		TestCase.assertTrue(gameState.getPoint() == 8);</span>
+<span class="fc" id="L33">	}</span>
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span>StreetCraps (1) (2016-nov-29 22:12:22)</div></body></html>
