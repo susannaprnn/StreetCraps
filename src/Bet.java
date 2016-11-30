@@ -3,14 +3,17 @@ public class Bet {
 	private Player player;
 	private int amount;
 	private boolean isBetOnPass;
-	public Bet(int amount, boolean isBetOnPass, Player player){
+	public Bet(int amount, boolean isBetOnPass, Player player){	
+		setAmount(amount);
+		this.isBetOnPass = isBetOnPass;
+		this.player = player;
+	}
+
+	private void setAmount(int amount) {
 		if(amount <= 0)
 			throw new IllegalArgumentException();
 		else
 			this.amount = amount;
-		
-		this.isBetOnPass = isBetOnPass;
-		this.player = player;
 	}
 	
 	public int getAmount(){
