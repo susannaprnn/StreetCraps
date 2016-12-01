@@ -50,10 +50,11 @@ public class Roller {
 	}
 
 	public void setBet(Bet bet) {
+		this.bet = bet;
 	}
 	
 	public Bet getBet() {
-		return null;
+		return bet;
 	}
 	public GameState getGameState() {
 		return gameState;
