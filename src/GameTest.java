@@ -10,35 +10,19 @@ import junit.framework.TestCase;
 
 public class GameTest {
 	
-	private Scanner createNameScanner() {
-		 //mock creation
-		 Scanner mockedScanner = mock(Scanner.class);
-		 when(mockedScanner.nextLine()).thenReturn("Petter");
-		 return mockedScanner;
-	}
-	
-	private Scanner createBetScanner(int amount) {
-		 //mock creation
-		 Scanner mockedScanner = mock(Scanner.class);
-		 when(mockedScanner.nextInt()).thenReturn(amount);
-		 return mockedScanner;
-	}
 	private Player createPlayer() {
 		 //mock creation
 		 Player mockedPlayer = mock(Player.class);
+		 when(mockedPlayer.getName()).thenReturn("Petter");
 		 when(mockedPlayer.getCash()).thenReturn(300);
 		 return mockedPlayer;
 	}
 	
 	@Test
 	public void testGetBet() {
-		Bet bet = Game.getBet(createPlayer(),createBetScanner(50));
-		TestCase.assertTrue(bet.getAmount() == 50);
-	}
-	
-	@Test
-	public void testStart() {
-		Player player = Game.start(createNameScanner());
-		TestCase.assertEquals("Petter", player.getName());
+		Game game =  new Game();
+		Bet bet = Game.getBet(createPlayer(),new Scanner("100 yes"));
+		TestCase.assertEquals(100, bet.getAmount());
+		TestCase.assertEquals(true, bet.getIsBetOnPass());
 	}
 }
