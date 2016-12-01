@@ -40,6 +40,14 @@ public class RollerTest {
 		TestCase.assertTrue(roller.getGameState().getRound() == 1);
 	}
 	
+	@Test
+	public void testGameStateAfterPlayroundThrowing6Twice() {
+		Roller roller = new Roller(create3Dice(),create3Dice());
+		roller.PlayRound();
+		
+		TestCase.assertFalse(roller.PlayRound());
+	}
+	
 	private Dice create1Dice() {
 		 //mock creation
 		 Dice mockedDice = mock(Dice.class);
