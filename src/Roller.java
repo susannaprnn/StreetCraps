@@ -1,4 +1,3 @@
-
 public class Roller {
 	private Dice firstDice;
 	private Dice secondDice;
@@ -14,6 +13,9 @@ public class Roller {
 		return !isCrap(sum);
 	}
 
+	public GameState getGameState() {
+		return null;
+	}
 	private boolean isCrap(int sum) {
 		return (sum == 2 || sum == 3 || sum == 12);			
 	}

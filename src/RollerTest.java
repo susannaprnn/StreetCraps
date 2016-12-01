@@ -31,6 +31,15 @@ public class RollerTest {
 		TestCase.assertTrue(roller.PlayRound());
 	}
 	
+	@Test
+	public void testGameStateAfterPlayroundThrowing6() {
+		Roller roller = new Roller(create3Dice(),create3Dice());
+		roller.PlayRound();
+		
+		TestCase.assertTrue(roller.getGameState().getPoint() == 6);
+		TestCase.assertTrue(roller.getGameState().getRound() == 1);
+	}
+	
 	private Dice create1Dice() {
 		 //mock creation
 		 Dice mockedDice = mock(Dice.class);
@@ -55,7 +64,7 @@ public class RollerTest {
 		 return mockedDice;
 	}
 	
-	private Dice create4Dice() {
+/*	private Dice create4Dice() {
 		 //mock creation
 		 Dice mockedDice = mock(Dice.class);
 		 when(mockedDice.roll()).thenReturn(4);
@@ -70,7 +79,7 @@ public class RollerTest {
 	 
 		 return mockedDice;
 	}
-	
+	*/
 	private Dice create6Dice() {
 		 //mock creation
 		 Dice mockedDice = mock(Dice.class);
