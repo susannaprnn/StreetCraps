@@ -2,6 +2,7 @@ public class Roller {
 	private Dice firstDice;
 	private Dice secondDice;
 	private GameState gameState;
+	private Bet bet;
 	
 	public Roller(Dice firstDice, Dice secondDice) {
 		this.firstDice = firstDice;
@@ -48,6 +49,12 @@ public class Roller {
 		
 	}
 
+	public void setBet(Bet bet) {
+	}
+	
+	public Bet getBet() {
+		return null;
+	}
 	public GameState getGameState() {
 		return gameState;
 	}

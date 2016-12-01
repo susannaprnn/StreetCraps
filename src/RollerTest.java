@@ -48,6 +48,13 @@ public class RollerTest {
 		TestCase.assertFalse(roller.PlayRound());
 	}
 	
+	private Bet createBet() {
+		 //mock creation
+		 Bet mockedBet = mock(Bet.class);
+	
+		 return mockedBet;
+	} 
+	
 	private Dice create1Dice() {
 		 //mock creation
 		 Dice mockedDice = mock(Dice.class);
@@ -95,7 +102,14 @@ public class RollerTest {
 		 
 		 return mockedDice;
 	}
-
+	
+	@Test
+	public void testGetBet() {
+		Bet bet = createBet();
+		Roller roller = new Roller(create3Dice(),create3Dice());
+		roller.setBet(bet);
+		TestCase.assertEquals(bet,roller.getBet());
+	}
 }
 
 
