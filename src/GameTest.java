@@ -20,8 +20,7 @@ public class GameTest {
 	
 	@Test
 	public void testGetBet() {
-		Game game =  new Game();
-		Bet bet = Game.getBet(createPlayer(),new Scanner("100 yes"));
+		Bet bet = Game.getBet(createPlayer(),new Scanner("100yes"));
 		TestCase.assertEquals(100, bet.getAmount());
 		TestCase.assertEquals(true, bet.getIsBetOnPass());
 	}

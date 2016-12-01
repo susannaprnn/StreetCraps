@@ -13,10 +13,11 @@ public class Game {
 	public static Bet getBet(Player player, Scanner scan){
 		int betAmount;
 		String answer;
+		
 		System.out.println("How much do you want to bet: ");
 		betAmount = scan.nextInt();	
 		System.out.println("Do you want to bet on pass? ");
-		answer = scan.nextLine();	
+		answer = scan.next();	
 		
 		Bet bet = new Bet(betAmount,answer.equals("yes"),player);
 	    return bet;
