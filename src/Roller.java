@@ -45,10 +45,18 @@ public class Roller {
 	}
 
 	private void payOutBets(boolean isPass) {
-		// TODO Auto-generated method stub
+		Player player = bet.getPlayer();
 		
+		if(bet.getIsBetOnPass() == isPass) {
+			System.out.println("You won! You got: " + bet.getAmount() * 2);
+			player.setCash(player.getCash() + bet.getAmount() * 2);
+		}
+		else
+		{		
+			player.setCash(player.getCash() - bet.getAmount());
+			System.out.println("You lost! You have " + player.getCash() + " left");			
+		}		
 	}
-
 	public void setBet(Bet bet) {
 		this.bet = bet;
 	}
