@@ -97,7 +97,7 @@ public class RollerTest {
 	}
 	
 	@Test
-	public void testGetPayoutBet() {
+	public void testGetPayoutBetWon() {
 		Player testPlayer = new Player("Oskari", 100);
 		Bet bet = new Bet(50, true, testPlayer);
 		Roller roller = new Roller(create1Dice(),create6Dice());
@@ -107,6 +107,16 @@ public class RollerTest {
 		TestCase.assertEquals(150, testPlayer.getCash());
 	}
 	
+	@Test
+	public void testGetPayoutBetLost() {
+		Player testPlayer = new Player("Oskari", 100);
+		Bet bet = new Bet(50, false, testPlayer);
+		Roller roller = new Roller(create1Dice(),create6Dice());
+		roller.setBet(bet);
+		
+		TestCase.assertFalse(roller.PlayRound());
+		TestCase.assertEquals(150, testPlayer.getCash());
+	}
 }
 
 

@@ -12,8 +12,12 @@ public class Roller {
 	
 	public boolean PlayRound() {  // PlayRound returns false if the game has ended
 		int sum = firstDice.roll() + secondDice.roll();
+		boolean isBetOnPass = false;
 		System.out.println("Roller throws: " + sum);
 		gameState.setRound(gameState.getRound() + 1);
+		
+		if(bet != null)
+			isBetOnPass = bet.getIsBetOnPass();
 		
 		switch(sum) {
 			case 2:
