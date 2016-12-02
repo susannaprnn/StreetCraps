@@ -9,49 +9,49 @@ public class RollerTest {
 
 	@Test
 	public void testPlayroundThrowing2() {
-		Roller roller = new Roller(create1Dice(),create1Dice());
-		TestCase.assertFalse(roller.PlayRound());
+		Roller sut = new Roller(create1Dice(),create1Dice());
+		TestCase.assertFalse(sut.PlayRound());
 	}
 	
 	@Test
 	public void testPlayroundThrowing3() {
-		Roller roller = new Roller(create2Dice(),create1Dice());
-		TestCase.assertFalse(roller.PlayRound());
+		Roller sut = new Roller(create2Dice(),create1Dice());
+		TestCase.assertFalse(sut.PlayRound());
 	}
 	
 	@Test
 	public void testPlayroundThrowing12() {
-		Roller roller = new Roller(create6Dice(),create6Dice());
-		TestCase.assertFalse(roller.PlayRound());
+		Roller sut = new Roller(create6Dice(),create6Dice());
+		TestCase.assertFalse(sut.PlayRound());
 	}
 	
 	@Test
 	public void testPlayroundThrowing6() {
-		Roller roller = new Roller(create3Dice(),create3Dice());
-		TestCase.assertTrue(roller.PlayRound());
+		Roller sut = new Roller(create3Dice(),create3Dice());
+		TestCase.assertTrue(sut.PlayRound());
 	}
 	
 	@Test
 	public void testGameStateAfterPlayroundThrowing6() {
-		Roller roller = new Roller(create3Dice(),create3Dice());
-		roller.PlayRound();
+		Roller sut = new Roller(create3Dice(),create3Dice());
+		sut.PlayRound();
 		
-		TestCase.assertTrue(roller.getGameState().getPoint() == 6);
-		TestCase.assertTrue(roller.getGameState().getRound() == 1);
+		TestCase.assertTrue(sut.getGameState().getPoint() == 6);
+		TestCase.assertTrue(sut.getGameState().getRound() == 1);
 	}
 	
 	@Test
 	public void testGameStateAfterPlayroundThrowing6Twice() {
-		Roller roller = new Roller(create3Dice(),create3Dice());
-		roller.PlayRound();
+		Roller sut = new Roller(create3Dice(),create3Dice());
+		sut.PlayRound();
 		
-		TestCase.assertFalse(roller.PlayRound());
+		TestCase.assertFalse(sut.PlayRound());
 	}
 	
 	private Bet createBet() {
 		 //mock creation
 		 Bet mockedBet = mock(Bet.class);
-	
+		 
 		 return mockedBet;
 	} 
 	
@@ -79,22 +79,7 @@ public class RollerTest {
 		 return mockedDice;
 	}
 	
-/*	private Dice create4Dice() {
-		 //mock creation
-		 Dice mockedDice = mock(Dice.class);
-		 when(mockedDice.roll()).thenReturn(4);
-		 
-		 return mockedDice;
-	}
-	
-	private Dice create5Dice() {
-		 //mock creation
-		 Dice mockedDice = mock(Dice.class);
-		 when(mockedDice.roll()).thenReturn(5);
-	 
-		 return mockedDice;
-	}
-	*/
+
 	private Dice create6Dice() {
 		 //mock creation
 		 Dice mockedDice = mock(Dice.class);
@@ -110,6 +95,18 @@ public class RollerTest {
 		roller.setBet(bet);
 		TestCase.assertEquals(bet,roller.getBet());
 	}
+	
+	@Test
+	public void testGetPayoutBet() {
+		Player testPlayer = new Player("Oskari", 100);
+		Bet bet = new Bet(50, true, testPlayer);
+		Roller roller = new Roller(create1Dice(),create6Dice());
+		roller.setBet(bet);
+		
+		TestCase.assertFalse(roller.PlayRound());
+		TestCase.assertEquals(150, testPlayer.getCash());
+	}
+	
 }
 
 

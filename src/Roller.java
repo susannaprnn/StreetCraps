@@ -20,8 +20,8 @@ public class Roller {
 			case 3:
 			case 12:
 				this.payOutBets(false);
-				
 				return false;
+				
 			case 7:
 				this.payOutBets(true);
 				
@@ -41,10 +41,14 @@ public class Roller {
 					}
 					else
 						return true;
+				
 		}
 	}
 
 	private void payOutBets(boolean isPass) {
+		if(bet == null)
+			return;
+		
 		Player player = bet.getPlayer();
 		
 		if(bet.getIsBetOnPass() == isPass) {

@@ -8,28 +8,28 @@ public class GameStateTest {
 
 	@Test
 	public void testGetRound() {
-		GameState gameState =  new GameState(2,11);
-		TestCase.assertTrue(gameState.getRound() == 2);
+		GameState sut =  new GameState(2,11);
+		TestCase.assertTrue(sut.getRound() == 2);
 	}
 	
 	@Test
 	public void testSetRound() {
-		GameState gameState =  new GameState(2,11);
-		gameState.setRound(3);
-		TestCase.assertTrue(gameState.getRound() == 3);
+		GameState sut =  new GameState(2,11);
+		sut.setRound(3);
+		TestCase.assertTrue(sut.getRound() == 3);
 	}
 	
 	@Test
 	public void testGetPoint() {
-		GameState gameState =  new GameState(2,11);
-		TestCase.assertTrue(gameState.getPoint() == 11);
+		GameState sut =  new GameState(2,11);
+		TestCase.assertTrue(sut.getPoint() == 11);
 	}
 	
 	@Test
 	public void testSetPoint() {
-		GameState gameState =  new GameState(2,11);
-		gameState.setPoint(8);
-		TestCase.assertTrue(gameState.getPoint() == 8);
+		GameState sut =  new GameState(2,11);
+		sut.setPoint(8);
+		TestCase.assertTrue(sut.getPoint() == 8);
 	}
 	
 }
