@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="sv"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>RollerTest.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">StreetCraps (1) (2016-nov-29 22:12:22)</a> &gt; <a href="../../index.html" class="el_group">StreetCraps</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">RollerTest.java</span></div><h1>RollerTest.java</h1><pre class="source lang-java linenums">import static org.mockito.Mockito.*;
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="sv"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>RollerTest.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">StreetCraps (1) (2016-dec-03 00:28:53)</a> &gt; <a href="../../index.html" class="el_group">StreetCraps</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">RollerTest.java</span></div><h1>RollerTest.java</h1><pre class="source lang-java linenums">import static org.mockito.Mockito.*;
 
 
 import org.junit.Test;
@@ -9,77 +9,159 @@ import junit.framework.TestCase;
 
 	@Test
 	public void testPlayroundThrowing2() {
-<span class="fc" id="L12">		Roller roller = new Roller(create1Dice(),create1Dice());</span>
-<span class="fc" id="L13">		TestCase.assertFalse(roller.PlayRound());</span>
+<span class="fc" id="L12">		Roller sut = new Roller(create1Dice(),create1Dice());</span>
+<span class="fc" id="L13">		TestCase.assertFalse(sut.PlayRound());</span>
 <span class="fc" id="L14">	}</span>
 	
 	@Test
 	public void testPlayroundThrowing3() {
-<span class="fc" id="L18">		Roller roller = new Roller(create2Dice(),create1Dice());</span>
-<span class="fc" id="L19">		TestCase.assertFalse(roller.PlayRound());</span>
+<span class="fc" id="L18">		Roller sut = new Roller(create2Dice(),create1Dice());</span>
+<span class="fc" id="L19">		TestCase.assertFalse(sut.PlayRound());</span>
 <span class="fc" id="L20">	}</span>
 	
 	@Test
 	public void testPlayroundThrowing12() {
-<span class="fc" id="L24">		Roller roller = new Roller(create6Dice(),create6Dice());</span>
-<span class="fc" id="L25">		TestCase.assertFalse(roller.PlayRound());</span>
+<span class="fc" id="L24">		Roller sut = new Roller(create6Dice(),create6Dice());</span>
+<span class="fc" id="L25">		TestCase.assertFalse(sut.PlayRound());</span>
 <span class="fc" id="L26">	}</span>
 	
 	@Test
 	public void testPlayroundThrowing6() {
-<span class="fc" id="L30">		Roller roller = new Roller(create3Dice(),create3Dice());</span>
-<span class="fc" id="L31">		TestCase.assertTrue(roller.PlayRound());</span>
+<span class="fc" id="L30">		Roller sut = new Roller(create3Dice(),create3Dice());</span>
+<span class="fc" id="L31">		TestCase.assertTrue(sut.PlayRound());</span>
 <span class="fc" id="L32">	}</span>
+	
+	@Test
+	public void testGameStateAfterPlayroundThrowing6() {
+<span class="fc" id="L36">		Roller sut = new Roller(create3Dice(),create3Dice());</span>
+<span class="fc" id="L37">		sut.PlayRound();</span>
+		
+<span class="pc bpc" id="L39" title="1 of 2 branches missed.">		TestCase.assertTrue(sut.getGameState().getPoint() == 6);</span>
+<span class="pc bpc" id="L40" title="1 of 2 branches missed.">		TestCase.assertTrue(sut.getGameState().getRound() == 1);</span>
+<span class="fc" id="L41">	}</span>
+	
+	@Test
+	public void testGameStateAfterPlayroundThrowing6Twice() {
+<span class="fc" id="L45">		Roller sut = new Roller(create3Dice(),create3Dice());</span>
+<span class="fc" id="L46">		sut.PlayRound();</span>
+		
+<span class="fc" id="L48">		TestCase.assertFalse(sut.PlayRound());</span>
+<span class="fc" id="L49">	}</span>
+	
+	private Bet createBet() {
+		 //mock creation
+<span class="fc" id="L53">		 Bet mockedBet = mock(Bet.class);</span>
+		 
+<span class="fc" id="L55">		 return mockedBet;</span>
+	} 
 	
 	private Dice create1Dice() {
 		 //mock creation
-<span class="fc" id="L36">		 Dice mockedDice = mock(Dice.class);</span>
-<span class="fc" id="L37">		 when(mockedDice.roll()).thenReturn(1);</span>
+<span class="fc" id="L60">		 Dice mockedDice = mock(Dice.class);</span>
+<span class="fc" id="L61">		 when(mockedDice.roll()).thenReturn(1);</span>
 	 
-<span class="fc" id="L39">		 return mockedDice;</span>
+<span class="fc" id="L63">		 return mockedDice;</span>
 	}
 	
 	private Dice create2Dice() {
 		 //mock creation
-<span class="fc" id="L44">		 Dice mockedDice = mock(Dice.class);</span>
-<span class="fc" id="L45">		 when(mockedDice.roll()).thenReturn(2);</span>
+<span class="fc" id="L68">		 Dice mockedDice = mock(Dice.class);</span>
+<span class="fc" id="L69">		 when(mockedDice.roll()).thenReturn(2);</span>
 		 
-<span class="fc" id="L47">		 return mockedDice;</span>
+<span class="fc" id="L71">		 return mockedDice;</span>
 	}
 
 	private Dice create3Dice() {
 		 //mock creation
-<span class="fc" id="L52">		 Dice mockedDice = mock(Dice.class);</span>
-<span class="fc" id="L53">		 when(mockedDice.roll()).thenReturn(3);</span>
-	 
-<span class="fc" id="L55">		 return mockedDice;</span>
-	}
-	
-	private Dice create4Dice() {
-		 //mock creation
-<span class="nc" id="L60">		 Dice mockedDice = mock(Dice.class);</span>
-<span class="nc" id="L61">		 when(mockedDice.roll()).thenReturn(4);</span>
-		 
-<span class="nc" id="L63">		 return mockedDice;</span>
-	}
-	
-	private Dice create5Dice() {
-		 //mock creation
-<span class="nc" id="L68">		 Dice mockedDice = mock(Dice.class);</span>
-<span class="nc" id="L69">		 when(mockedDice.roll()).thenReturn(5);</span>
-	 
-<span class="nc" id="L71">		 return mockedDice;</span>
-	}
-	
-	private Dice create6Dice() {
-		 //mock creation
 <span class="fc" id="L76">		 Dice mockedDice = mock(Dice.class);</span>
-<span class="fc" id="L77">		 when(mockedDice.roll()).thenReturn(6);</span>
-		 
+<span class="fc" id="L77">		 when(mockedDice.roll()).thenReturn(3);</span>
+	 
 <span class="fc" id="L79">		 return mockedDice;</span>
 	}
+	
 
+	private Dice create6Dice() {
+		 //mock creation
+<span class="fc" id="L85">		 Dice mockedDice = mock(Dice.class);</span>
+<span class="fc" id="L86">		 when(mockedDice.roll()).thenReturn(6);</span>
+		 
+<span class="fc" id="L88">		 return mockedDice;</span>
+	}
+	
+	private Dice create6Then2Dice() {
+		 //mock creation
+<span class="fc" id="L93">		 Dice mockedDice = mock(Dice.class);</span>
+<span class="fc" id="L94">		 when(mockedDice.roll()).thenReturn(6).thenReturn(2);</span>
+		 
+<span class="fc" id="L96">		 return mockedDice;</span>
+	}
+	
+	@Test
+	public void testGetBet() {
+<span class="fc" id="L101">		Bet bet = createBet();</span>
+<span class="fc" id="L102">		Roller roller = new Roller(create3Dice(),create3Dice());</span>
+<span class="fc" id="L103">		roller.setBet(bet);</span>
+<span class="fc" id="L104">		TestCase.assertEquals(bet,roller.getBet());</span>
+<span class="fc" id="L105">	}</span>
+	
+	@Test
+	public void testGetPayoutBetOnPassWon() {
+<span class="fc" id="L109">		Player testPlayer = new Player(&quot;Oskari&quot;, 100);</span>
+<span class="fc" id="L110">		Bet bet = new Bet(50, true, testPlayer);</span>
+<span class="fc" id="L111">		Roller roller = new Roller(create1Dice(),create6Dice());</span>
+<span class="fc" id="L112">		roller.setBet(bet);</span>
+		
+<span class="fc" id="L114">		TestCase.assertFalse(roller.PlayRound());</span>
+<span class="fc" id="L115">		TestCase.assertEquals(150, testPlayer.getCash());</span>
+<span class="fc" id="L116">	}</span>
+	
+	@Test
+	public void testGetPayoutBetOnCrapWon() {
+<span class="fc" id="L120">		Player testPlayer = new Player(&quot;Oskari&quot;, 100);</span>
+<span class="fc" id="L121">		Bet bet = new Bet(50, false, testPlayer);</span>
+<span class="fc" id="L122">		Roller roller = new Roller(create1Dice(),create2Dice());</span>
+<span class="fc" id="L123">		roller.setBet(bet);</span>
+		
+<span class="fc" id="L125">		TestCase.assertFalse(roller.PlayRound());</span>
+<span class="fc" id="L126">		TestCase.assertEquals(150, testPlayer.getCash());</span>
+<span class="fc" id="L127">	}</span>
+	
+
+	@Test
+	public void testGetPayoutBetOnCrapLost() {
+<span class="fc" id="L132">		Player testPlayer = new Player(&quot;Oskari&quot;, 100);</span>
+<span class="fc" id="L133">		Bet bet = new Bet(50, false, testPlayer);</span>
+<span class="fc" id="L134">		Roller roller = new Roller(create1Dice(),create6Dice());</span>
+<span class="fc" id="L135">		roller.setBet(bet);</span>
+		
+<span class="fc" id="L137">		TestCase.assertFalse(roller.PlayRound());</span>
+<span class="fc" id="L138">		TestCase.assertEquals(50, testPlayer.getCash());</span>
+<span class="fc" id="L139">	}</span>
+	
+	
+	@Test
+	public void testGetPayoutBetOnPassLost() {
+<span class="fc" id="L144">		Player testPlayer = new Player(&quot;Oskari&quot;, 100);</span>
+<span class="fc" id="L145">		Bet bet = new Bet(50, false, testPlayer);</span>
+<span class="fc" id="L146">		Roller roller = new Roller(create1Dice(),create6Dice());</span>
+<span class="fc" id="L147">		roller.setBet(bet);</span>
+		
+<span class="fc" id="L149">		TestCase.assertFalse(roller.PlayRound());</span>
+<span class="fc" id="L150">		TestCase.assertEquals(50, testPlayer.getCash());</span>
+<span class="fc" id="L151">	}</span>
+	
+	@Test
+	public void testContinueOnNotPoint() {
+<span class="fc" id="L155">		Player testPlayer = new Player(&quot;Oskari&quot;, 100);</span>
+<span class="fc" id="L156">		Bet bet = new Bet(50, false, testPlayer);</span>
+<span class="fc" id="L157">		Roller roller = new Roller(create2Dice(),create6Then2Dice());</span>
+<span class="fc" id="L158">		roller.setBet(bet);</span>
+		
+<span class="fc" id="L160">		TestCase.assertTrue(roller.PlayRound());</span>
+<span class="fc" id="L161">		TestCase.assertTrue(roller.PlayRound());</span>
+<span class="fc" id="L162">	}</span>
+	
 }
 
 
-</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span>StreetCraps (1) (2016-nov-29 22:12:22)</div></body></html>
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span>StreetCraps (1) (2016-dec-03 00:28:53)</div></body></html>

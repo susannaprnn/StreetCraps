@@ -1,24 +1,34 @@
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="sv"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>Bet.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">StreetCraps (1) (2016-nov-29 22:12:22)</a> &gt; <a href="../../index.html" class="el_group">StreetCraps</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">Bet.java</span></div><h1>Bet.java</h1><pre class="source lang-java linenums">
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="sv"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>Bet.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">StreetCraps (1) (2016-dec-03 00:28:53)</a> &gt; <a href="../../index.html" class="el_group">StreetCraps</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">Bet.java</span></div><h1>Bet.java</h1><pre class="source lang-java linenums">
 public class Bet {
 	private Player player;
 	private int amount;
 	private boolean isBetOnPass;
 <span class="fc" id="L6">	public Bet(int amount, boolean isBetOnPass, Player player){</span>
-<span class="fc" id="L7">		this.amount = amount;</span>
-<span class="fc" id="L8">		this.isBetOnPass = isBetOnPass;</span>
-<span class="fc" id="L9">		this.player = player;</span>
-<span class="fc" id="L10">	}</span>
+<span class="fc bfc" id="L7" title="All 2 branches covered.">		if(player.getCash()&lt;amount)</span>
+<span class="fc" id="L8">			throw new IllegalArgumentException();</span>
+<span class="fc" id="L9">		setAmount(amount);</span>
+<span class="fc" id="L10">		player.setCash(player.getCash()-amount);</span>
+<span class="fc" id="L11">		this.isBetOnPass = isBetOnPass;</span>
+<span class="fc" id="L12">		this.player = player;</span>
+<span class="fc" id="L13">	}</span>
+
+	private void setAmount(int amount) {
+<span class="fc bfc" id="L16" title="All 2 branches covered.">		if(amount &lt;= 0)</span>
+<span class="fc" id="L17">			throw new IllegalArgumentException();</span>
+		else
+<span class="fc" id="L19">			this.amount = amount;</span>
+<span class="fc" id="L20">	}</span>
 	
 	public int getAmount(){
-<span class="fc" id="L13">		return amount;</span>
+<span class="fc" id="L23">		return amount;</span>
 	}
 	
 	public Player getPlayer(){
-<span class="fc" id="L17">		return player;</span>
+<span class="fc" id="L27">		return player;</span>
 	}
 	
 	public boolean getIsBetOnPass(){
-<span class="fc" id="L21">		return isBetOnPass;</span>
+<span class="fc" id="L31">		return isBetOnPass;</span>
 	}
 }
-</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span>StreetCraps (1) (2016-nov-29 22:12:22)</div></body></html>
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span>StreetCraps (1) (2016-dec-03 00:28:53)</div></body></html>

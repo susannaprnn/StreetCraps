@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="sv"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>Game.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">StreetCraps (1) (2016-dec-03 00:28:53)</a> &gt; <a href="../../index.html" class="el_group">StreetCraps</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">Game.java</span></div><h1>Game.java</h1><pre class="source lang-java linenums">import java.util.Scanner;
+
+public abstract class Game {
+	
+<span class="nc" id="L5">	private Game() {}</span>
+	public static Player start(Scanner scan){
+		String name;	
+<span class="fc" id="L8">		System.out.print(&quot;Name: &quot;);</span>
+<span class="fc" id="L9">		name = scan.next();</span>
+		
+<span class="fc" id="L11">		return new Player(name,100);</span>
+	}
+	
+	public static Bet getBet(Player player, Scanner scan){
+		int betAmount;
+		String answer;
+<span class="fc" id="L17">		System.out.println(&quot;How much do you want to bet: &quot;);</span>
+<span class="fc bfc" id="L18" title="All 2 branches covered.">		while (!scan.hasNextInt())</span>
+		{
+<span class="fc" id="L20">			scan.nextLine();                                                                                                                                                                                                                                                                                                                      </span>
+<span class="fc" id="L21">			System.out.println(&quot;How much do you want to bet: &quot;);</span>
+		}
+		
+<span class="fc" id="L24">		betAmount = scan.nextInt();	</span>
+		
+<span class="fc bfc" id="L26" title="All 2 branches covered.">		if(player.getCash() &lt; betAmount) {</span>
+<span class="fc" id="L27">			System.out.println(&quot;You don't have enough money, I will just take all you have&quot;);</span>
+<span class="fc" id="L28">			betAmount = player.getCash();</span>
+		}
+		
+<span class="fc" id="L31">		System.out.println(&quot;Do you want to bet on pass? &quot;);</span>
+<span class="fc" id="L32">		answer = scan.next();	</span>
+		
+<span class="fc" id="L34">		Bet bet = new Bet(betAmount,answer.equals(&quot;yes&quot;),player);</span>
+<span class="fc" id="L35">		player.setCash(player.getCash() - betAmount);</span>
+<span class="fc" id="L36">	    return bet;</span>
+	}
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span>StreetCraps (1) (2016-dec-03 00:28:53)</div></body></html>
