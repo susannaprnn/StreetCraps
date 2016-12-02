@@ -1,7 +1,8 @@
 import java.util.Scanner;
 
-public class Game {
+public abstract class Game {
 	
+	private Game() {}
 	public static Player start(Scanner scan){
 		String name;	
 		System.out.print("Name: ");

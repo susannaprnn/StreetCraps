@@ -40,8 +40,14 @@ public class BetTest {
 	}
 	
 	@Test
-	public void testBetIsZero() {
+	public void testIllegalBet() {
 		thrown.expect(IllegalArgumentException.class);
-		Bet bet =  new Bet(0, true, createPlayer());
+		Bet bet =  new Bet(500, true, createPlayer());
+	}
+	
+	@Test
+	public void testSetIllegalBet() {
+		thrown.expect(IllegalArgumentException.class);
+		Bet bet =  new Bet(-100, true, createPlayer());
 	}
 }

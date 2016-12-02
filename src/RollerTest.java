@@ -88,6 +88,14 @@ public class RollerTest {
 		 return mockedDice;
 	}
 	
+	private Dice create6Then2Dice() {
+		 //mock creation
+		 Dice mockedDice = mock(Dice.class);
+		 when(mockedDice.roll()).thenReturn(6).thenReturn(2);
+		 
+		 return mockedDice;
+	}
+	
 	@Test
 	public void testGetBet() {
 		Bet bet = createBet();
@@ -141,6 +149,18 @@ public class RollerTest {
 		TestCase.assertFalse(roller.PlayRound());
 		TestCase.assertEquals(50, testPlayer.getCash());
 	}
+	
+	@Test
+	public void testContinueOnNotPoint() {
+		Player testPlayer = new Player("Oskari", 100);
+		Bet bet = new Bet(50, false, testPlayer);
+		Roller roller = new Roller(create2Dice(),create6Then2Dice());
+		roller.setBet(bet);
+		
+		TestCase.assertTrue(roller.PlayRound());
+		TestCase.assertTrue(roller.PlayRound());
+	}
+	
 }
 
 

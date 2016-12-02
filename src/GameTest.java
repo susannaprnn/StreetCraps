@@ -24,6 +24,20 @@ public class GameTest {
 		TestCase.assertEquals(100, bet.getAmount());
 		TestCase.assertEquals(true, bet.getIsBetOnPass());
 	}
+
+	@Test
+	public void testGetToLargeBet() {
+		Bet bet = Game.getBet(createPlayer(),new Scanner("1000\nyes"));
+		TestCase.assertEquals(300, bet.getAmount());
+		TestCase.assertEquals(true, bet.getIsBetOnPass());
+	}
+	
+	@Test
+	public void testGetWrongBet() {
+		Bet bet = Game.getBet(createPlayer(),new Scanner("pfft\n100\nyes"));
+		TestCase.assertEquals(100, bet.getAmount());
+		TestCase.assertEquals(true, bet.getIsBetOnPass());
+	}
 	
 	@Test
 	public void testStart() {
