@@ -23,11 +23,11 @@ public class Roller {
 			case 2:
 			case 3:
 			case 12:
-				this.payOutBets(isBetOnPass);
+				this.payOutBets(false);
 				return false;
 				
 			case 7:
-				this.payOutBets(isBetOnPass);
+				this.payOutBets(true);
 				
 				return false;
 			default:

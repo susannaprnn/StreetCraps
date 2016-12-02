@@ -97,7 +97,7 @@ public class RollerTest {
 	}
 	
 	@Test
-	public void testGetPayoutBetWon() {
+	public void testGetPayoutBetOnPassWon() {
 		Player testPlayer = new Player("Oskari", 100);
 		Bet bet = new Bet(50, true, testPlayer);
 		Roller roller = new Roller(create1Dice(),create6Dice());
@@ -105,11 +105,10 @@ public class RollerTest {
 		
 		TestCase.assertFalse(roller.PlayRound());
 		TestCase.assertEquals(150, testPlayer.getCash());
-
 	}
 	
 	@Test
-	public void testGetPayoutBetLost() {
+	public void testGetPayoutBetOnCrapWon() {
 		Player testPlayer = new Player("Oskari", 100);
 		Bet bet = new Bet(50, false, testPlayer);
 		Roller roller = new Roller(create1Dice(),create6Dice());
@@ -117,6 +116,30 @@ public class RollerTest {
 		
 		TestCase.assertFalse(roller.PlayRound());
 		TestCase.assertEquals(150, testPlayer.getCash());
+	}
+	
+
+	@Test
+	public void testGetPayoutBetOnCrapLost() {
+		Player testPlayer = new Player("Oskari", 100);
+		Bet bet = new Bet(50, false, testPlayer);
+		Roller roller = new Roller(create1Dice(),create6Dice());
+		roller.setBet(bet);
+		
+		TestCase.assertFalse(roller.PlayRound());
+		TestCase.assertEquals(50, testPlayer.getCash());
+	}
+	
+	
+	@Test
+	public void testGetPayoutBetOnPassLost() {
+		Player testPlayer = new Player("Oskari", 100);
+		Bet bet = new Bet(50, false, testPlayer);
+		Roller roller = new Roller(create1Dice(),create6Dice());
+		roller.setBet(bet);
+		
+		TestCase.assertFalse(roller.PlayRound());
+		TestCase.assertEquals(50, testPlayer.getCash());
 	}
 }
 
