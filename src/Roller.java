@@ -60,7 +60,6 @@ public class Roller {
 		}
 		else
 		{		
-			player.setCash(player.getCash() - bet.getAmount());
 			System.out.println("You lost! You have " + player.getCash() + " left");			
 		}
 	}

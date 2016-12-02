@@ -111,7 +111,7 @@ public class RollerTest {
 	public void testGetPayoutBetOnCrapWon() {
 		Player testPlayer = new Player("Oskari", 100);
 		Bet bet = new Bet(50, false, testPlayer);
-		Roller roller = new Roller(create1Dice(),create6Dice());
+		Roller roller = new Roller(create1Dice(),create2Dice());
 		roller.setBet(bet);
 		
 		TestCase.assertFalse(roller.PlayRound());
