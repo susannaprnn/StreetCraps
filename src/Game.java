@@ -16,7 +16,7 @@ public class Game {
 		System.out.println("How much do you want to bet: ");
 		while (!scan.hasNextInt())
 		{
-			scan.nextLine();
+			scan.nextLine();                                                                                                                                                                                                                                                                                                                      
 			System.out.println("How much do you want to bet: ");
 		}
 		
@@ -31,6 +31,7 @@ public class Game {
 		answer = scan.next();	
 		
 		Bet bet = new Bet(betAmount,answer.equals("yes"),player);
+		player.setCash(player.getCash() - betAmount);
 	    return bet;
 	}
 }

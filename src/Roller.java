@@ -23,11 +23,11 @@ public class Roller {
 			case 2:
 			case 3:
 			case 12:
-				this.payOutBets(false);
+				this.payOutBets(isBetOnPass);
 				return false;
 				
 			case 7:
-				this.payOutBets(true);
+				this.payOutBets(isBetOnPass);
 				
 				return false;
 			default:
@@ -39,13 +39,12 @@ public class Roller {
 				}
 				else
 					if (gameState.getPoint() == sum) {
-						this.payOutBets(true);
+						this.payOutBets(isBetOnPass);
 						
 						return false;
 					}
 					else
 						return true;
-				
 		}
 	}
 
@@ -63,8 +62,9 @@ public class Roller {
 		{		
 			player.setCash(player.getCash() - bet.getAmount());
 			System.out.println("You lost! You have " + player.getCash() + " left");			
-		}		
+		}
 	}
+	
 	public void setBet(Bet bet) {
 		this.bet = bet;
 	}

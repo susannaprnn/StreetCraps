@@ -3,8 +3,11 @@ public class Bet {
 	private Player player;
 	private int amount;
 	private boolean isBetOnPass;
-	public Bet(int amount, boolean isBetOnPass, Player player){	
+	public Bet(int amount, boolean isBetOnPass, Player player){
+		if(player.getCash()<amount)
+			throw new IllegalArgumentException();
 		setAmount(amount);
+		player.setCash(player.getCash()-amount);
 		this.isBetOnPass = isBetOnPass;
 		this.player = player;
 	}

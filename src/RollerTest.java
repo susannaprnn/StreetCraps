@@ -105,6 +105,7 @@ public class RollerTest {
 		
 		TestCase.assertFalse(roller.PlayRound());
 		TestCase.assertEquals(150, testPlayer.getCash());
+
 	}
 	
 	@Test
